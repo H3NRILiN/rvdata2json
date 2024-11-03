@@ -69,9 +69,6 @@ p 'Read '+path
     if !curDir.end_with?("/")
       curDir = curDir + '/'
     end
-
-    p curDir
-
     unless Dir.exist?(curDir)
       Dir.mkdir(curDir)
     end
@@ -79,8 +76,9 @@ p 'Read '+path
         file.write(data.to_json)
     end
   rescue => error
-      p "Faild, code:"
-      p "err|file=#{rvdata}|errorclass=#{error.class}|error=#{error.message}"
+      p error
+      # p "Faild, code:"
+      # p "err|file=#{rvdata}|errorclass=#{error.class}|error=#{error.message}"
     next
   end
   p 'complete!'
